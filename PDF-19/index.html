@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabela de Investimentos</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <div class="container">
+    <h1>💰 Controle de Investimentos</h1>
+
+    <form id="form-investimento">
+      <div class="input-group">
+        <label for="tipo">Tipo</label>
+        <input type="text" id="tipo" placeholder="Ex: Ações, CDB, Tesouro..." required>
+      </div>
+
+      <div class="input-group">
+        <label for="rentabilidade">Rentabilidade (%)</label>
+        <input type="number" id="rentabilidade" placeholder="Ex: 10" required>
+      </div>
+
+      <div class="input-group">
+        <label for="valor">Valor (R$)</label>
+        <input type="number" id="valor" placeholder="Ex: 1000" required>
+      </div>
+
+      <button type="submit">Adicionar</button>
+    </form>
+
+    <div id="mensagem-erro" class="erro-servidor" style="display: none;">
+      ⚠️ Servidor JSON offline! Verifique se rodou o comando:<br>
+      <code>json-server --watch bd.json --port 3000</code>
+    </div>
+
+    <h2>📊 Lista de Investimentos</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Tipo</th>
+          <th>Rentabilidade (%)</th>
+          <th>Valor (R$)</th>
+        </tr>
+      </thead>
+      <tbody id="tabela"></tbody>
+    </table>
+  </div>
+
+  <script src="funcionalidade.js"></script>
+</body>
+</html>
