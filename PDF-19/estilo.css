@@ -7,9 +7,10 @@ body {
   justify-content: center;
 }
 
+
 .container {
   width: 80%;
-  max-width: 700px;
+  max-width: 700px; 
   background: white;
   margin-top: 40px;
   padding: 25px;
@@ -24,29 +25,33 @@ h1, h2 {
 
 form {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Quebra linha se necessário */
   gap: 15px;
-  justify-content: space-between;
+  justify-content: space-between; /* alinha itens em um contêiner flexível */
 }
 
+/* Agrupamento de cada campo do formulário */
 .input-group {
   flex: 1 1 30%;
   display: flex;
   flex-direction: column;
 }
 
+/* Texto do rótulo */
 label {
   margin-bottom: 4px;
   font-weight: bold;
   color: #444;
 }
 
+/* texto e número */
 input {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 6px;
 }
 
+/* Botão de envio */
 button {
   flex: 1 1 100%;
   padding: 10px;
@@ -65,24 +70,26 @@ button:hover {
 
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: collapse; /* Remove espaços entre bordas */
   margin-top: 20px;
 }
 
+/* Estilo das células */
 th, td {
   text-align: center;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ddd; /* Linha de separação */
 }
 
+/* Cabeçalho da tabela */
 th {
   background-color: #0078ff;
   color: white;
 }
 
 .erro-servidor {
-  background: #ffdddd;
-  color: #b30000;
+  background: #ffdddd; /* Fundo vermelho claro */
+  color: #b30000; /* Texto vermelho escuro */
   border: 1px solid #b30000;
   padding: 10px;
   border-radius: 8px;
