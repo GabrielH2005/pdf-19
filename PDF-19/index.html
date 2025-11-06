@@ -1,46 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8"> <!-- Define o padrão de caracteres (acentos, etc.) -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ajusta para telas de celular -->
-  <title>Tabela de Investimentos</title> <!-- Título da aba do navegador -->
-  <link rel="stylesheet" href="estilo.css"> <!-- Importa o arquivo de estilos -->
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabela de Investimentos</title>
+  <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-  <div class="container"> <!-- Div principal que contém todo o conteúdo -->
-    <h1>💰 Controle de Investimentos</h1> <!-- Título da página -->
-
-    <!-- Formulário para adicionar novos investimentos -->
+  <div class="container">
+    <h1>💰 Controle de Investimentos</h1>
     <form id="form-investimento">
-      <!-- Campo para o tipo de investimento -->
       <div class="input-group">
         <label for="tipo">Tipo</label>
         <input type="text" id="tipo" placeholder="Ex: Ações, CDB, Tesouro..." required>
       </div>
-
-      <!-- Campo para rentabilidade -->
       <div class="input-group">
         <label for="rentabilidade">Rentabilidade (%)</label>
         <input type="number" id="rentabilidade" placeholder="Ex: 10" required>
       </div>
-
-      <!-- Campo para valor -->
       <div class="input-group">
         <label for="valor">Valor (R$)</label>
         <input type="number" id="valor" placeholder="Ex: 1000" required>
       </div>
-
-      <!-- Botão de envio -->
       <button type="submit">Adicionar</button>
     </form>
-
-    <!-- Mensagem de erro que aparece se o servidor estiver desligado -->
-    <div id="mensagem-erro" class="erro-servidor" style="display: none;">
-      ⚠️ Servidor JSON offline! Verifique se rodou o comando:<br>
-      <code>json-server --watch bd.json --port 3000</code>
     </div>
 
-    <!-- Tabela que mostrará os investimentos cadastrados -->
+    <!--investimentos cadastrados -->
     <h2>📊 Lista de Investimentos</h2>
     <table>
       <thead>
@@ -50,12 +36,9 @@
           <th>Valor (R$)</th>
         </tr>
       </thead>
-      <!-- Corpo da tabela preenchido dinamicamente via JavaScript -->
       <tbody id="tabela"></tbody>
     </table>
   </div>
-
-  <!-- Importa o arquivo JavaScript com a lógica -->
   <script src="funcionalidade.js"></script>
 </body>
 </html>
