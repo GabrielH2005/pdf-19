@@ -1,69 +1,71 @@
+// (servidor JSON local)
 const API_URL = "http://localhost:3000/investimentos";
+
 const form = document.getElementById("form-investimento");
-const tabela = document.getElementById("tabela");
-const msgErro = document.getElementById("mensagem-erro");
 
-// Função para buscar e exibir dados
+const tabela = document.getElementById("tabela-investimentos");
+
+// Buscar e exibir os investimentos
+// 
+
 async function carregarInvestimentos() {
-  try {
-    const resposta = await fetch(API_URL);
+  // Faz uma requisição para obter os dados do servidor JSON
+  const resposta = await fetch(API_URL);
 
-    if (!resposta.ok) throw new Error("Servidor fora do ar");
+  // Converte os dados recebidos em formato JSON (array de objetos)
+  const dados = await resposta.json();
 
-    const dados = await resposta.json();
-    msgErro.style.display = "none";
-    tabela.innerHTML = "";
+  // Limpa o conteúdo anterior da tabela antes de preencher novamente
+  tabela.innerHTML = "";
 
-    if (dados.length === 0) {
-      tabela.innerHTML = `<tr><td colspan="3">Nenhum investimento cadastrado</td></tr>`;
-      return;
-    }
+  // Percorre cada item retornado do servidor e cria uma linha na tabela
+  dados.forEach(item => {
+    // Cria um elemento <tr> (linha da tabela)
+    const linha = document.createElement("tr");
 
-    dados.forEach(item => {
-      const linha = document.createElement("tr");
-      linha.innerHTML = `
-        <td>${item.tipo}</td>
-        <td>${item.rentabilidade}%</td>
-        <td>R$ ${item.valor.toFixed(2)}</td>
-      `;
-      tabela.appendChild(linha);
-    });
+    // Define o conteúdo HTML dessa linha, preenchendo os dados do investimento
+    linha.innerHTML = `
+      <td>${item.tipo}</td>                <!-- Tipo de investimento -->
+      <td>${item.rentabilidade}%</td>     <!-- Rentabilidade (%) -->
+      <td>R$ ${Number(item.valor).toFixed(2)}</td> <!-- Valor formatado com 2 casas decimais -->
+    `;
 
-  } catch (erro) {
-    msgErro.style.display = "block";
-    tabela.innerHTML = `<tr><td colspan="3">Erro ao carregar dados</td></tr>`;
-  }
+    // Adiciona a linha criada dentro do corpo da tabela
+    tabela.appendChild(linha);
+  });
 }
 
-// Adiciona novo investimento
+// Adiciona um "ouvinte" de evento para quando o formulário for enviado
 form.addEventListener("submit", async (e) => {
+  // Impede o comportamento padrão do formulário (recarregar a página)
   e.preventDefault();
 
-  const tipo = document.getElementById("tipo").value.trim();
-  const rentabilidade = parseFloat(document.getElementById("rentabilidade").value);
-  const valor = parseFloat(document.getElementById("valor").value);
+  // Cria um novo objeto com os valores preenchidos pelo usuário
+  const novoInvestimento = {
+    // Pega o valor do campo "tipo"
+    tipo: document.getElementById("tipo").value,
 
-  if (!tipo || isNaN(rentabilidade) || isNaN(valor)) {
-    alert("Preencha todos os campos corretamente!");
-    return;
-  }
+    // Converte o campo "rentabilidade" para número decimal
+    rentabilidade: parseFloat(document.getElementById("rentabilidade").value),
 
-  const novo = { tipo, rentabilidade, valor };
+    // Converte o campo "valor" para número decimal
+    valor: parseFloat(document.getElementById("valor").value)
+  };
 
-  try {
-    const resposta = await fetch(API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(novo)
-    });
+  // Envia os dados para o servidor JSON usando o método POST
+  await fetch(API_URL, {
+    method: "POST", // Tipo de requisição (enviar dados)
+    headers: { "Content-Type": "application/json" }, // Define o formato dos dados (JSON)
+    body: JSON.stringify(novoInvestimento) // Converte o objeto em texto JSON
+  });
 
-    if (!resposta.ok) throw new Error("Erro ao salvar investimento");
+  // Limpa os campos do formulário após o envio
+  form.reset();
 
-    form.reset();
-    carregarInvestimentos();
-  } catch (erro) {
-    msgErro.style.display = "block";
-  }
+  // Atualiza a tabela exibindo os novos dados
+  carregarInvestimentos();
 });
 
+// Chamada inicial da função para carregar os dados ao abrir a página
+//
 carregarInvestimentos();
