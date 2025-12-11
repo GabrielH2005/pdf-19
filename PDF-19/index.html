@@ -8,25 +8,35 @@
 </head>
 <body>
   <div class="container">
+
     <h1>💰 Controle de Investimentos</h1>
+
+    <!-- Formulário para adicionar investimentos -->
     <form id="form-investimento">
       <div class="input-group">
         <label for="tipo">Tipo</label>
+        <!-- Tipo do investimento (ex.: Ações, CDB) -->
         <input type="text" id="tipo" placeholder="Ex: Ações, CDB, Tesouro..." required>
       </div>
+
       <div class="input-group">
         <label for="rentabilidade">Rentabilidade (%)</label>
+        <!-- Rentabilidade em porcentagem -->
         <input type="number" id="rentabilidade" placeholder="Ex: 10" required>
       </div>
+
       <div class="input-group">
         <label for="valor">Valor (R$)</label>
+        <!-- Valor investido em reais -->
         <input type="number" id="valor" placeholder="Ex: 1000" required>
       </div>
+
+      <!-- Botão que submete o formulário e adiciona o investimento -->
       <button type="submit">Adicionar</button>
     </form>
     </div>
 
-    <!--investimentos cadastrados -->
+    <!-- Seção com a lista/ tabela de investimentos cadastrados -->
     <h2>📊 Lista de Investimentos</h2>
     <table>
       <thead>
@@ -36,9 +46,12 @@
           <th>Valor (R$)</th>
         </tr>
       </thead>
+      <!-- Corpo da tabela onde linhas serão inseridas dinamicamente pelo JS -->
       <tbody id="tabela"></tbody>
     </table>
   </div>
+
+  <!-- Script que contém a lógica (envio do form, render da tabela, persistência possível) -->
   <script src="funcionalidade.js"></script>
 </body>
 </html>
