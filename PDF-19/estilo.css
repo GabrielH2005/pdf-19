@@ -1,92 +1,97 @@
+/* Estilos base da página */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #eef3f8;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
+  font-family: Arial, sans-serif; /* Fonte legível */
+  background-color: #eef3f8; /* Fundo claro e suave */
+  margin: 0; /* Remove margens padrão do navegador */
+  padding: 0; /* Remove padding padrão */
+  display: flex; /* Usa flexbox para centralizar horizontalmente */
+  justify-content: center; /* Centraliza conteúdo no eixo horizontal */
 }
 
-
+/* Card principal que contém formulário + tabela */
 .container {
-  width: 80%;
-  max-width: 700px; 
-  background: white;
-  margin-top: 40px;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+  width: 80%; /* Largura relativa da área principal */
+  max-width: 700px; /* Largura máxima para telas grandes */
+  background: white; /* Fundo branco do card */
+  margin-top: 40px; /* Espaço superior para não colar no topo */
+  padding: 25px; /* Espaçamento interno */
+  border-radius: 12px; /* Cantos arredondados */
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.1); /* Sombra suave */
 }
 
+/* Títulos centralizados e cor padrão */
 h1, h2 {
   text-align: center;
   color: #333;
 }
 
+/* Formulário com flex-wrap para quebrar em linhas menores */
 form {
   display: flex;
-  flex-wrap: wrap; /* Quebra linha se necessário */
-  gap: 15px;
-  justify-content: space-between; /* alinha itens em um contêiner flexível */
+  flex-wrap: wrap; /* Permite quebra de linha em telas pequenas */
+  gap: 15px; /* Espaçamento entre campos */
+  justify-content: space-between; /* Distribui espaço entre os itens */
 }
 
-/* Agrupamento de cada campo do formulário */
+/* Cada grupo de input (label + input) */
 .input-group {
-  flex: 1 1 30%;
+  flex: 1 1 30%; /* Cresce e encolhe; base 30% de largura */
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Label acima do input */
 }
 
-/* Texto do rótulo */
+/* Estilo dos labels */
 label {
   margin-bottom: 4px;
   font-weight: bold;
   color: #444;
 }
 
-/* texto e número */
+/* Inputs (texto e número) */
 input {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 6px;
 }
 
-/* Botão de envio */
+/* Botão de envio principal */
 button {
-  flex: 1 1 100%;
+  flex: 1 1 100%; /* Ocupa linha inteira */
   padding: 10px;
-  background-color: #0078ff;
+  background-color: #0078ff; /* Azul chamativo */
   color: white;
   border: none;
   border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s; /* Transição suave para hover */
 }
 
 button:hover {
-  background-color: #005ec4;
+  background-color: #005ec4; /* Tom mais escuro ao passar o mouse */
 }
 
+/* Tabela com largura total do card */
 table {
   width: 100%;
-  border-collapse: collapse; /* Remove espaços entre bordas */
+  border-collapse: collapse; /* Remove espaçamento entre bordas */
   margin-top: 20px;
 }
 
-/* Estilo das células */
+/* Estilo das células da tabela */
 th, td {
   text-align: center;
   padding: 10px;
-  border-bottom: 1px solid #ddd; /* Linha de separação */
+  border-bottom: 1px solid #ddd; /* Linha de separação entre linhas */
 }
 
-/* Cabeçalho da tabela */
+/* Cabeçalho da tabela com destaque */
 th {
   background-color: #0078ff;
   color: white;
 }
 
+/* Caixa de erro (ex.: falha ao salvar no servidor) */
 .erro-servidor {
   background: #ffdddd; /* Fundo vermelho claro */
   color: #b30000; /* Texto vermelho escuro */
